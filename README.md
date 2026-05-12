@@ -19,8 +19,14 @@ Focado na evolução em pyhon e no entreterimento ao usuário.
 1. Baixe o arquivo
 2. Execute no terminal
 
+## 📸 Preview
+
+![Preview do jogo](/imgs/preview.png)
+
 ## 📈 Versões
 - v1.0 → versão inicial
 - v1.1 → correção de bugs
 - v1.1.1 → organização do projeto
 - v1.1.2 → melhoria visual e README
+- v1.2 → Criação do sistema de rankings
+- v1.2.2 → Melhoria no Readme

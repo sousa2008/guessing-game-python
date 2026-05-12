@@ -11,14 +11,14 @@ perda = 0
 recorde = 0
 menu = 1
 #variaveis dos recordes: modo dificil
-recordeDificil1 = 999
-recordeDificil2 = 999
+recordeDificil1 = 0
+recordeDificil2 = 0
 nome1 = ""
 nome2 = ""
 
 #varaiveis dos recordes: modo limitado
-recordeLimit1 = 0
-recordeLimit2 = 0
+recordeLimit1 = 999
+recordeLimit2 = 999
 nomeLimit1 = ""
 nomeLimit2 = ""
 
@@ -32,7 +32,7 @@ print('=-=-= Jogo da advinhação =-=-=')
 while pergunta == "S":
     menu = int(input('Você deseja:\n1-Jogar\n2-Sair\n3-Recordes\n'))
     # validação para o menu não quebrar
-    if menu not in [1, 2, 3]:
+    while menu not in [1, 2, 3]:
         print("Valor inválido.\nDigite 1, 2 ou 3.")
         menu = int(input('Você deseja:\n1-Jogar\n2-Sair\n'))
 # definiçao do botão 2 como saida
@@ -127,32 +127,26 @@ while pergunta == "S":
             cont += 1
             # Laço para limitar o número de jogadas
             while cont < 7 and n != aleatorio:
-                    if n < aleatorio:
-                        print('Muito baixo.')
-                        cont += 1
-                        n = int(input('Tente novamente: '))
-                    elif n > aleatorio:
-                        print('Muito alto.')
-                        cont += 1
-                        n = int(input('Tente novamente: '))
-                    elif n == aleatorio:
-                        print("Você conseguiu antes das chances acabarem!\nO número era: \033[32;1m{}\033[m\nVocê usou \033[32;1m{}\033[m tentativas".format(aleatorio, cont))
-                        cont += 7
-                    elif cont == 7 and n != aleatorio:
-                        print("Você perdeu.\nO valor era: \033[32;1m{}\033[m".format(aleatorio))
-                        print("Tente novamente.")
-
-            #Definição dos recordes do modo limitado
+                if n < aleatorio:
+                    print('Muito baixo.')
+                elif n > aleatorio:
+                    print('Muito alto.')
+                n = int(input('Tente novamente: '))
+                cont += 1
             if n == aleatorio:
+                print("Você conseguiu antes das chances acabarem!\nO número era: \033[32;1m{}\033[m\nVocê usou \033[32;1m{}\033[m tentativas".format(aleatorio, cont))
                 if cont < recordeLimit1:
-                    nomeLimit2 = nomeLimit1
                     recordeLimit2 = recordeLimit1
-
-                    nomeLimit1 = str(input("Digite o nome que irá para os recordes: "))
+                    nomeLimit2 = nomeLimit1
                     recordeLimit1 = cont
+                    nomeLimit1 = str(input("Digite o nome que irá para os recordes: "))
                 elif cont < recordeLimit2:
-                    nomeLimit2 = str(input("Digite o nome que irá para os recordes: "))
                     recordeLimit2 = cont
+                    nomeLimit2 = str(input("Digite o nome que irá para os recordes: "))
+            else:
+                print("Você perdeu.\nO valor era: \033[32;1m{}\033[m".format(aleatorio))
+                print("Tente novamente.")
+
 
 # Modo de jogo 5
         if dificuldade == 5:
